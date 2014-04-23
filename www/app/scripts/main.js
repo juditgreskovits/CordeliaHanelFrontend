@@ -1,8 +1,11 @@
 var studioHanel = studioHanel || {};
 
 studioHanel.StudioHanel = function() {
+
+	var path = document.domain == 'http://studio-hanel.com/' ? 
+		'http://studio-hanel.com/studio-hanel/' : 'http://127.0.0.1:8000/';
 	
-	var menuPath = 'http://127.0.0.1:8000/api/studiohanel/menu/?format=json';
+	var menuPath = path + 'api/studiohanel/menu/?format=json';
 
 	var landing = new studioHanel.Landing();
 	var teaserAbout = new studioHanel.TeaserAbout();
