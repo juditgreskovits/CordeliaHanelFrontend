@@ -2,7 +2,7 @@ var studioHanel = studioHanel || {};
 
 studioHanel.StudioHanel = function() {
 
-	var path = document.domain == 'http://studio-hanel.com/' ? 
+	var path = document.domain == 'studio-hanel.com/' ? 
 		'http://studio-hanel.com/studio-hanel/' : 'http://127.0.0.1:8000/';
 	
 	var menuPath = path + 'api/studiohanel/menu/?format=json';
