@@ -7,7 +7,15 @@ studioHanel.StudioHanel = function() {
 	var path = document.domain == 'studio-hanel.com' ? 
 		'http://studio-hanel.com/studio-hanel/' : 'http://127.0.0.1:8000/';
 	
+	var landingPath = path + 'api/studiohanel/landing/?format=json';
 	var menuPath = path + 'api/studiohanel/menu/?format=json';
+	var aboutPath = path + 'api/studiohanel/about/?format=json';
+	var interiorsPath = path + 'api/studiohanel/interior/?format=json';
+	var caseStudyPath = path + 'api/studiohanel/casestudy/?format=json';
+	var productDesignPath = path + 'api/studiohanel/productdesign/?format=json';
+	var contactPath = path + 'api/studiohanel/contact/?format=json';
+
+	var totalLoaded = 0;
 
 	var landing = new studioHanel.Landing();
 	var teaserAbout = new studioHanel.TeaserAbout();
@@ -32,10 +40,45 @@ studioHanel.StudioHanel = function() {
 
 	var menu = new studioHanel.Menu(navigation);
 	navigation.registerSection(menu);
-	navigation.update();
+
+	function checkAllLoaded() {
+		totalLoaded++;
+		if(totalLoaded == 6) {
+			navigation.update();
+			navigation.init();
+		}
+	}
 
 	$.getJSON(menuPath, function(data) { 
-		console.log(data);
 		menu.populate(data.objects);
+		teaserAbout.populate(data.objects[0].cta);
+		teaserInteriors.populate(data.objects[1].cta);
+		teaserContact.populate(data.objects[4].cta);
+		checkAllLoaded();
+	});
+
+	$.getJSON(aboutPath, function(data) { 
+		about.populate(data.objects);
+		checkAllLoaded();
+	});
+
+	$.getJSON(interiorsPath, function(data) { 
+		interiors.populate(data.objects);
+		checkAllLoaded();
+	});
+
+	$.getJSON(caseStudyPath, function(data) { 
+		caseStudy.populate(data.objects);
+		checkAllLoaded();
+	});
+
+	$.getJSON(productDesignPath, function(data) { 
+		productDesign.populate(data.objects);
+		checkAllLoaded();
+	});
+
+	$.getJSON(contactPath, function(data) { 
+		contact.populate(data.objects);
+		checkAllLoaded();
 	});
 };

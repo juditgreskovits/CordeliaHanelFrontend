@@ -8,8 +8,8 @@ studioHanel.Menu = function(navigation) {
 	var scrollTops = [0];
 	var previousIndex = currentIndex = 0;
 
-	function populate(menuList) {
-		$.each(menuList, function(index, menuData) {
+	function populate(data) {
+		$.each(data, function(index, menuData) {
 			var menuIndex = index + 1;
 			$('#menu').append('<li><a href="#" id="' + menuIndex + '">' + menuData.label + '</a></li>');
 		});

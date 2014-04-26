@@ -1,0 +1,9 @@
+#landing {
+    @extend %section;
+    top: 0;
+    background-image: url(../images/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0px 0px;
+    background-attachment:fixed;
+}

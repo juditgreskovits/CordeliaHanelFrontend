@@ -2,22 +2,37 @@ var studioHanel = studioHanel || {};
 
 studioHanel.TeaserContact = function() {
 
-	 function update(windowHeight, scrollTop, maxScrollTop) {
-	 	var targetTop = $("#product-design").position().top + $("#product-design").height();
-	 	$("#teaser-contact").css({top:targetTop});
+	function populate(data) {
+		$('#teaser-contact h2').text(data);
+	}
+	studioHanel.TeaserContact.prototype.populate = populate;
+
+	function update(windowHeight, scrollTop, maxScrollTop) {
+	 	var targetTop = $('#product-design').position().top + $('#product-design').height();
+	 	$('#teaser-contact').css({top:targetTop});
 	}
 	studioHanel.TeaserContact.prototype.update = update;
 };
 
 studioHanel.Contact = function() {
-	var contactHeight = $("#contact .pattern").position().top + $("#contact .pattern").height() - $("#contact").position().top;
+
+	var contactHeight = $('#contact .pattern').position().top + $('#contact .pattern').height() - $('#contact').position().top;
 	var testScrollTop;
 	var mScrollTop;
 
+	function populate(data) {
+		$('#phone').append('<p><strong>' + data[0].phone + '</strong></p>');
+		var address = studioHanel.Utils.markupLinebreaks(data[0].address, true);
+		address = address.replace('<p>', '<p><strong>');
+		address = address.replace('<br/>', '</strong><br/>');
+		$('#address').append(address);
+	}
+	studioHanel.Contact.prototype.populate = populate;
+
 	function update(windowHeight, scrollTop, maxScrollTop) {
 		
-		var testScrollTop = $("#teaser-contact").position().top + $("#teaser-contact").height() - windowHeight;
-		var targetTop = $("#teaser-contact").position().top + $("#teaser-contact").height() - contactHeight;
+		var testScrollTop = $('#teaser-contact').position().top + $('#teaser-contact').height() - windowHeight;
+		var targetTop = $('#teaser-contact').position().top + $('#teaser-contact').height() - contactHeight;
 		var targetPaddingBottom; 
 		if(scrollTop < testScrollTop) {
 			targetTop = targetTop; //this is not right - like ever.
@@ -34,9 +49,8 @@ studioHanel.Contact = function() {
 				targetPaddingBottom = 0;
 			}
 		} 
-		// console.log("testScrollTop = " + testScrollTop + " | scrollTop = " + scrollTop + " | diff = " + diff);
-		$("#contact").css({top:targetTop});
-		$("#contact").css('padding-bottom', targetPaddingBottom);
+		$('#contact').css({top:targetTop});
+		$('#contact').css('padding-bottom', targetPaddingBottom);
 	}
 	studioHanel.Contact.prototype.update = update;
 };

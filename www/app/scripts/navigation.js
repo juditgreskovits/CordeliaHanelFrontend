@@ -8,13 +8,17 @@ studioHanel.Navigation = function(menu, landing, teaser, about) {
 	var scrollTop = $(window).scrollTop();
 	var maxScrollTop = $(document).height() - $(window).height();
 
-	$(window).resize(function() {
-		windowHeight = $(window).height();
+	function init() {
 
-		update();
-	});
+		$(window).resize(function() {
+			windowHeight = $(window).height();
 
-	$(window).on('scroll', update);
+			update();
+		});
+
+		$(window).on('scroll', update);
+	}
+	studioHanel.Navigation.prototype.init = init;
 
 	function scrollToPosition(targetPosition) {
 		var scrollDistance = Math.abs(targetPosition - scrollTop);

@@ -2,7 +2,12 @@ var studioHanel = studioHanel || {};
 
 studioHanel.TeaserAbout = function() {
 
-	 function update(windowHeight, scrollTop, maxScrollTop) {
+	function populate(data) {
+		$("#teaser-about h1").text(data);
+	}
+	studioHanel.TeaserAbout.prototype.populate = populate;
+
+	function update(windowHeight, scrollTop, maxScrollTop) {
 	 	if(scrollTop < windowHeight)
 	 	{
 		 	var targetTop = windowHeight - $('#teaser-about').height();
@@ -15,6 +20,37 @@ studioHanel.TeaserAbout = function() {
 };
 
 studioHanel.About = function() {
+
+	function populate(data) {
+		var aboutData = data[0];
+		$("#about h1").text(aboutData.title);
+		var descriptions = studioHanel.Utils.markupLinebreaks(aboutData.description);
+		descriptions = descriptions.split("<br/>");
+		var firstDescription = "";
+		var secondDescription = "";
+		var description;
+		var i = 0, l = descriptions.length, h = Math.ceil(l/2);
+		while(i < l)
+		{
+			description = '<p>' + descriptions[i] + '</p>';
+			if(i++ < h) {
+				firstDescription += description;
+			}
+			else {
+				secondDescription += description;
+			}
+			
+		}
+		$('#about-first-column').append(firstDescription);
+		$('#about-second-column').append(secondDescription);
+		/*if($('#about-first-column').height() > $('#about-second-column').height()) {
+			var paddingTop = ($('#about-first-column').height() - $('#about-second-column').height())/2;
+			console.log('paddingTop = ' + paddingTop);
+			$('#about-second-column').css('padding-top', paddingTop);
+		}*/
+		
+	}
+	studioHanel.About.prototype.populate = populate;
 	
 	function update(windowHeight, scrollTop, maxScrollTop) {
 		if(scrollTop < windowHeight*2)
