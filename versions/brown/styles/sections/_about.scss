@@ -1,0 +1,49 @@
+#teaser-about {
+    height: 96px;
+    background-color: $green;
+
+    h1 {
+        margin-top: 24px;
+        margin-bottom: 10px;
+    }
+}
+
+#about {
+    @extend %section;
+    background-color: $dark-brown;
+
+    p {
+        color: $yellow;
+    }
+
+    .header {
+        height: 70px;
+    }
+
+    .container, .container-fluid {
+        margin-top: 60px;
+        margin-bottom: 40px;
+
+        #about-third-column {
+            img {
+                margin-bottom: -40px;
+            }
+
+            #cordelia-old {
+                position: relative;
+                left: 50%;
+                margin-left: -122px;
+            }
+
+            #cordelia-new-left {
+                float: left;
+                margin-left: -15px;
+            }
+
+            #cordelia-new-right {
+                float: right;
+                margin-right: -15px;
+            }
+        }
+    } 
+}

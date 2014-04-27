@@ -1,0 +1,21 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
+// Partials
+@import "partials/config";
+
+// Partials
+@import "mixins/prefix";
+
+// bower:scss
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+
+// Sections
+@import "sections/main";
+@import "sections/menu";
+@import "sections/landing";
+@import "sections/about";
+@import "sections/interiors";
+@import "sections/case_study";
+@import "sections/product_design";
+@import "sections/contact";

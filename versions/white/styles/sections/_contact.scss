@@ -1,6 +1,6 @@
 #teaser-contact {
     height: 80px;
-    background-color: $green;
+    background-color: $medium-brown;
 
     h2 {
         margin-top: 18px;
@@ -10,7 +10,7 @@
 
 #contact {
     @extend %section;
-    background-color: $dark-brown;
+    background-color: $white;
     padding-bottom: 500px;
     z-index: -1000;
 
@@ -33,9 +33,9 @@
         .text-input {
             font-size: $font-size-h4;
             border-bottom: 2px solid $green;
-            color: $white;
+            color: $dark-brown;
             &:focus {
-                border-bottom: 2px solid $yellow;
+                border-bottom: 2px solid $medium-brown;
             }
             @include input-placeholder {
                 color: $green;
@@ -46,8 +46,11 @@
             padding: 0;
             font-family: $font-family-sans-serif-bold;
             font-size: $font-size-h4;
-            color: $yellow;
+            color: $medium-brown;
             text-transform: uppercase;
+            &:hover {
+                color: $dark-brown;
+            }
         }
 
         #name-input, #email-input {
@@ -74,7 +77,7 @@
     #contact-details {
         float: right;
         font-size: $font-size-h4;
-        color: $yellow;
+        color: $dark-brown;
 
         p {
             margin-top: 12px;

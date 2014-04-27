@@ -1,0 +1,109 @@
+/* FONTS */
+@font-face {
+	font-family: 'Conv_GandhiSans-Regular';
+	src: url('../fonts/GandhiSans-Regular.eot');
+	src: local('☺'),
+		url('../fonts/GandhiSans-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/GandhiSans-Regular.woff') format('woff'), 
+		url('../fonts/GandhiSans-Regular.ttf') format('truetype'),
+		url('../fonts/GandhiSans-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_GandhiSans-Bold';
+	src: url('../fonts/GandhiSans-Bold.eot');
+	src: local('☺'),
+		url('../fonts/GandhiSans-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/GandhiSans-Bold.woff') format('woff'),
+		url('../fonts/GandhiSans-Bold.ttf') format('truetype'),
+		url('../fonts/GandhiSans-Bold.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_LibreBaskerville-Bold';
+	src: url('../fonts/LibreBaskerville-Bold.eot');
+	src: local('☺'),
+		url('../fonts/LibreBaskerville-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/LibreBaskerville-Bold.woff') format('woff'),
+		url('../fonts/LibreBaskerville-Bold.ttf') format('truetype'),
+		url('../fonts/LibreBaskerville-Bold.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* COLOURS */
+$green: #a8baa9;
+$green-alpha-90: rgba(168, 186, 169, 0.9);
+$yellow: #fff5cf;
+$light-brown: #dbcdad;
+$medium-brown: #b29c7d;
+$dark-brown: #806854;
+$white: #ffffff;
+$white-alpha-90: rgba(255, 255, 255, 1);
+
+$light-brown-alpha-25: #f6f2ea;
+$light-brown-alpha-33: #f3efe4;
+$light-brown-alpha-50: #ede6d6;
+$light-brown-alpha-66: #e7dec9;
+
+//== Scaffolding
+//
+// ## Settings for some of the most global styles.
+
+//** Background color for `<body>`.
+$body-bg:               $white;
+//** Global text color on `<body>`.
+$text-color:            $dark-brown;
+
+//** Global textual link color.
+$link-color:            $yellow;
+//** Link hover color set via `darken()` function.
+$link-hover-color:      $white;
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+$font-family-sans-serif:  "Conv_GandhiSans-Regular", arial, sans-serif;
+$font-family-sans-serif-bold:  "Conv_GandhiSans-Bold", arial, sans-serif;
+$font-family-serif:       "Conv_LibreBaskerville-Bold", times, serif;
+
+/* */
+
+$font-size-base:          14px; // <p>, menu
+$font-size-large:         ceil(($font-size-base * 1.1)); // ~16px
+
+/*$font-size-h1:            floor(($font-size-base * 2.15)); // ~30px
+$font-size-h2:            ceil(($font-size-base * 1.7)); // ~24px*/
+$font-size-h1:            floor(($font-size-base * 1.7)); // ~30px
+$font-size-h2:            ceil(($font-size-base * 1.5)); // ~24px
+$font-size-h3:            ceil(($font-size-base * 1.25)); // ~18px
+$font-size-h4:            ceil(($font-size-base * 1.1)); // ~16px // form
+
+//** Unit-less `line-height` for use in components like buttons.
+$line-height-base:        1.428571429 !default; // 20/14
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+$line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
+
+//** By default, this inherits from the `<body>`.
+$headings-font-family:    $font-family-serif;
+$headings-font-weight:    bold;
+$headings-line-height:    1.1 !default;
+$headings-color:          inherit !default;
+
+//== Navs
+//
+//##
+
+//=== Shared nav styles
+$nav-link-padding:                          10px 8px;
+$nav-link-hover-bg:                         transparent;
+
+$nav-disabled-link-color:                   $green;
+$nav-disabled-link-hover-color:             transparent;
+
+$nav-open-link-hover-color:                 #fff !default;
