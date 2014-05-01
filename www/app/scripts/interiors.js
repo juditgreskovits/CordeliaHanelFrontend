@@ -56,13 +56,15 @@ studioHanel.Interiors = function() {
 
 		$.each(data, function(index, interior) {
 			var selector = '#interior-' + index;
-			var overlay = '<div class="overlay">';
-			overlay += '<h1>' + interior.title + '</h1>';
+			$(selector).find('.overlay-background').addClass(interior.theme);
+			var overlay = '<div class="overlay ' + interior.theme + '">';
+			overlay += '<h1 class="theme">' + interior.theme + '</h1>';
+			/*overlay += '<h1>' + interior.title + '</h1>';
 			overlay += '<h3>' + interior.location + '</h3>';
-			overlay += '<p>' + interior.caption + '</p>';
+			overlay += '<p>' + interior.caption + '</p>';*/
 			overlay += '</div>';
 			$(selector).append(overlay);
-			$(selector).css('background-image', 'url(../' + interior.interiorImages[0].image + ')');
+			$(selector).css('background-image', 'url(../' + 'images/' + interior.theme + '.jpg'/*interior.interiorImages[0].image*/ + ')');
 			$(selector).mouseenter(function() {
 				$(this).find('.overlay').css('visibility', 'visible');
 				TweenMax.to($(this).find('.overlay-background'), 0.6, {autoAlpha:1.0, ease:Sine.easeOut});
@@ -237,18 +239,23 @@ studioHanel.Gallery = function(interiorIndex) {
 		var targetIndex = galleryIndex + next;
 		if(targetIndex >= 0 && targetIndex <= images.length-1) {
 			galleryIndex = targetIndex;
-			var image = images[galleryIndex];
-			var targetLeft = -image.left;
-			if(galleryIndex == images.length - 1) {
-				targetLeft += windowWidth - image.width;
-			}
-			else if(galleryIndex > 0) {
-				targetLeft += (windowWidth - image.width)/2;
-			}
+			var targetLeft = calculateTargetLeft();
 			TweenMax.to($('#images'), transitionDuration, {css:{left:targetLeft}, ease:Sine.easeOut});
 			prevNextFade(next*(-1), false);
 			updateNextPrevButtons();
 		}
+	}
+
+	function calculateTargetLeft() {
+		var image = images[galleryIndex];
+		var targetLeft = -image.left;
+		if(galleryIndex == images.length - 1) {
+			targetLeft += windowWidth - image.width;
+		}
+		else if(galleryIndex > 0) {
+			targetLeft += (windowWidth - image.width)/2;
+		}
+		return targetLeft;
 	}
 
 	function updateNextPrevButtons() {
@@ -284,6 +291,7 @@ studioHanel.Gallery = function(interiorIndex) {
 		$.each(images, function(index, image) {
 			resizeAndRepositionImage(index);
 		});
+		$('#images').css('left', calculateTargetLeft());
 	}
 
 	function resizeAndRepositionImage(imageIndex) {
