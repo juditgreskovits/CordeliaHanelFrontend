@@ -64,7 +64,7 @@ studioHanel.Interiors = function() {
 			overlay += '<p>' + interior.caption + '</p>';*/
 			overlay += '</div>';
 			$(selector).append(overlay);
-			$(selector).css('background-image', 'url(../' + 'images/' + interior.theme + '.jpg'/*interior.interiorImages[0].image*/ + ')');
+			$(selector).css('background-image', 'url(' + 'images/' + interior.theme + '.jpg'/*'../' + interior.interiorImages[0].image*/ + ')');
 			$(selector).mouseenter(function() {
 				$(this).find('.overlay').css('visibility', 'visible');
 				TweenMax.to($(this).find('.overlay-background'), 0.6, {autoAlpha:1.0, ease:Sine.easeOut});
