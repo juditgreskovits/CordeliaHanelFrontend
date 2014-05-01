@@ -27,8 +27,9 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+        <img id="logo" src="images/logo_large.png" alt="Studio Hanel"/>
+
         <div class="navbar-fixed-top">
-            <img id="logo" src="images/logo_large.png" alt="Studio Hanel"/>
             <ul id="menu" class="nav nav-pills pull-right"></ul>
         </div>
 
@@ -107,10 +108,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-7">
-                        <form>
-                            <input id="name-input" class="text-input" type="text" name="nameInput" placeholder="Your name"> 
-                            <input id="email-input" class="text-input" type="text" name="emailInput" placeholder="Your email">
-                            <input id="message-input" class="text-input" type="text" name="messageInput" placeholder="What's on your mind?">
+                        <form action="http://127.0.0.1:8000/StudioHanel/contact/" method="post">
+                            <input id="name-input" class="text-input" type="text" name="name" placeholder="Your name"> 
+                            <input id="email-input" class="text-input" type="text" name="sender" placeholder="Your email">
+                            <input id="subject-input" class="text-input" type="text" name="subject" placeholder="Your subject">
+                            <input id="message-input" class="text-input" type="text" name="message" placeholder="What's on your mind?">
                             <input id="send-button" class="button" type="submit" value="Send"> 
                         </form>
                     </div>

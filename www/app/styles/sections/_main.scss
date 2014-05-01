@@ -16,6 +16,8 @@ h1, h2, h3 {
     width: 100%;
     margin: 0;
     padding: 0;
+    display: none;
+    visibility: hidden;
 }
 
 .teaser {
@@ -32,8 +34,8 @@ h1, h2, h3 {
 
 .pattern {
     width: 100%;
-    height: 12px;
-    background: url(../images/arrow_pattern.png) repeat-x;
+    height: 8px;
+    background: url(../images/new_pattern.png) repeat-x;
 }
 
 .shadow-up {

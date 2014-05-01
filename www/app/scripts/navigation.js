@@ -10,6 +10,8 @@ studioHanel.Navigation = function(menu, landing, teaser, about) {
 
 	function init() {
 
+		update();
+
 		$(window).resize(function() {
 			windowHeight = $(window).height();
 
@@ -28,9 +30,15 @@ studioHanel.Navigation = function(menu, landing, teaser, about) {
 	}
 	studioHanel.Navigation.prototype.scrollToPosition = scrollToPosition;
 
-	function update() {
+	function update(updateScrollTop) {
 		
-		scrollTop = $(window).scrollTop();
+		console.log('scrollTop = ' + scrollTop);
+		if(updateScrollTop === true) {
+			$(window).scrollTop(scrollTop);
+		}
+		else if ($(window).scrollTop() > 0) {
+			scrollTop = $(window).scrollTop();
+		}
 		maxScrollTop = $(document).height() - $(window).height();
 
 		$.each(sections, function(index, section) {
