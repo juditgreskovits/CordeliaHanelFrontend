@@ -64,7 +64,7 @@ studioHanel.Interiors = function() {
 			overlay += '<p>' + interior.caption + '</p>';*/
 			overlay += '</div>';
 			$(selector).append(overlay);
-			$(selector).css('background-image', 'url(' + 'images/' + interior.theme + '.jpg'/*'../' + interior.interiorImages[0].image*/ + ')');
+			$(selector).css('background-image', 'url(' + 'images/' + interior.theme + '.jpg'/*'../'interior.interiorImages[0].image*/ + ')');
 			$(selector).mouseenter(function() {
 				$(this).find('.overlay').css('visibility', 'visible');
 				TweenMax.to($(this).find('.overlay-background'), 0.6, {autoAlpha:1.0, ease:Sine.easeOut});
@@ -284,7 +284,7 @@ studioHanel.Gallery = function(interiorIndex) {
 			var nextImageIndex = imageIndex + 1;
 			if(nextImageIndex < images.length) loadImage(nextImageIndex);
 		};
-		image.src = image.path;
+		image.src = '../' + image.path;
 	}
 
 	function resizeAndRepositionImages() {
@@ -318,8 +318,8 @@ studioHanel.Gallery = function(interiorIndex) {
 		//if(image.left < windowWidth) {
 			var imageClass = imageIndex == galleryIndex ? 'active' : 'inactive';
 			if(!htmlExists) {
-				console.log('image.src = ' + image.src);
-				$('#images').append('<img id="' + imageId + '" src="../../' + image.src + '">');
+				console.log('image.path = ' + image.path);
+				$('#images').append('<img id="' + imageId + '" src="' + image.path + '">');
 				var targetAlpha = imageIndex == galleryIndex ? 1.0 : 0.33;
 				TweenMax.to($(selector), 1.2, {autoAlpha:targetAlpha, ease:Sine.easeOut});
 			}
