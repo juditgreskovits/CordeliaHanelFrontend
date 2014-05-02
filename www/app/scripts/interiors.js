@@ -318,6 +318,7 @@ studioHanel.Gallery = function(interiorIndex) {
 		//if(image.left < windowWidth) {
 			var imageClass = imageIndex == galleryIndex ? 'active' : 'inactive';
 			if(!htmlExists) {
+				console.log('image.src = ' + image.src);
 				$('#images').append('<img id="' + imageId + '" src="../../' + image.src + '">');
 				var targetAlpha = imageIndex == galleryIndex ? 1.0 : 0.33;
 				TweenMax.to($(selector), 1.2, {autoAlpha:targetAlpha, ease:Sine.easeOut});
