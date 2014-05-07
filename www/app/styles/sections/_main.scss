@@ -51,6 +51,10 @@ h1, h2, h3 {
     background: url(../images/shadow_down.png) repeat-x;
 }
 
+.two-columns {
+    @include prefix('column-count', 2);
+}
+
 %placeholder {
     background: url(../images/background.jpg) no-repeat;
     background-size: cover;

@@ -21,6 +21,7 @@
 
 #interiors {
     @extend %section;
+    background-color: $light-brown;
     
     .container, .container-fluid, .row, .col-md-6{
         margin: 0;
@@ -30,7 +31,6 @@
     .col-md-6 {
         margin: 0;
         padding: 0;
-        background-color: $light-brown;
         background-repeat: no-repeat;
         background-size: cover;
 
@@ -60,7 +60,7 @@
             }
 
             &.natural {
-                background-color: $light-brown;
+                background-color: $medium-brown;
             }
         }
 
@@ -134,7 +134,7 @@
                     color: $green;
                 }
                 h1 {
-                    color: $white;
+                    color: $light-brown;
                 }
             }
         } 

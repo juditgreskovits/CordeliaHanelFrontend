@@ -27,28 +27,10 @@
             float: left;
             border: 5px solid $light-brown;
         }
-    }
-
-    /*.container, .container-fluid, .row {
-        margin: 0;
-        padding: 0;
-    }
-
-    #cell1, #cell4, #cell5 {
-        background-color: $dark-brown;
-        color: $yellow;
-    } 
-
-    #cell2, #cell3, #cell6 {
-        background-color: $medium-brown;
         p {
-            color: $yellow;
+            margin-left: 20px;
         }
-        
-        h3 {
-            color: $white;
-        }
-    }*/
+    }
 
     .overlay {
         @extend %placeholder;

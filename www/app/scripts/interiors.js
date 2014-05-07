@@ -11,15 +11,17 @@ studioHanel.TeaserInteriors = function() {
 
 	function update(windowHeight, scrollTop, maxScrollTop) {
 	 	var landingHeight = $('#landing').height();
-	 	var aboutHeight = $("#about").height();
+	 	var aboutHeight = $('#about').height();
+	 	var position = 'absolute';
 	 	var targetTop;
 	 	var ratio;
 	 	if(scrollTop < landingHeight) {
-	 		targetTop =  $("#about").position().top + aboutHeight;
+	 		targetTop =  $('#about').position().top + aboutHeight;
 	 		ratio = 1;
 	 	}
 	 	else if(scrollTop > landingHeight + aboutHeight) {
-	 		targetTop = scrollTop;
+	 		position = 'fixed';
+	 		targetTop = 0;
 	 		ratio = 0;
 	 	}
 	 	else {
@@ -28,7 +30,7 @@ studioHanel.TeaserInteriors = function() {
 	 		ratio = (landingHeight + aboutHeight*0.66 - scrollTop)/aboutHeight*3;
 	 		if(ratio > 1) ratio = 1;
 	 	}
-	 	$("#teaser-interiors").css({top:targetTop});
+	 	$('#teaser-interiors').css({position:position, top:targetTop});
 	 	$('#teaser-interiors .pattern').css('opacity', ratio);
 	 	$('#teaser-interiors h2').css('opacity', ratio);
 	 	$('#teaser-interiors .arrow').height(arrowHeight*ratio);
@@ -42,20 +44,24 @@ studioHanel.Interiors = function() {
 	var interiorLength; 
 
 	function populate(data) {
+		data = data.sort(orderInteriors);
 		interiorLength = data.length;
 		var rows = '';
 		var i = 0, l = Math.ceil(interiorLength/2)*2;
 		for(; i<l; i++) {
 			if(i%2 == 0) rows += '<div class="row">';
-			rows += '<div id="interior-' + i + '" class="col-md-6">';
-			rows += '<div class="overlay-background"></div>'; // id="interior-overlay-' + i + '" 
-			rows += '</div>';
+			if(i < interiorLength) {
+				console.log('data[' + i + '].id = ' + data[i].id);
+				rows += '<div id="interior-' + data[i].id + '" class="col-md-6">';
+				rows += '<div class="overlay-background"></div>'; // id="interior-overlay-' + i + '" 
+				rows += '</div>';
+			}
 			if(i%2 == 1) rows += '</div>';
 		}
 		$('#interiors .container-fluid').append(rows);
 
 		$.each(data, function(index, interior) {
-			var selector = '#interior-' + index;
+			var selector = '#interior-' + interior.id;
 			$(selector).find('.overlay-background').addClass(interior.theme);
 			var overlay = '<div class="overlay ' + interior.theme + '">';
 			overlay += '<h1 class="theme">' + interior.theme + '</h1>';
@@ -75,6 +81,7 @@ studioHanel.Interiors = function() {
 			});
 			$(selector).click(function() {
 				var index = this.id.substr(-1);
+				console.log('this.id = ' + this.id);
 				studioHanel.Gallery(index);
 			});
 		});
@@ -82,6 +89,16 @@ studioHanel.Interiors = function() {
 		updateImages();
 	}
 	studioHanel.Interiors.prototype.populate = populate;
+
+	function orderInteriors(a, b) {
+		if(a.order < b.order) {
+			return -1;
+		}
+		if (a.order > b.order) {
+			return 1;
+		}
+		return 0;
+	}
 	
 	function update(windowHeight, scrollTop, maxScrollTop) {
 		var rowHeight = (windowHeight - $('#teaser-interiors').height())/2;
@@ -124,7 +141,6 @@ studioHanel.Gallery = function(interiorIndex) {
 	var title, location, caption;
 	var images = [];
 
-	interiorIndex = Number(interiorIndex) + 1;
 	var galleryPath = main.getPath() + 'api/studiohanel/interior/' + interiorIndex + '?format=json';
 
 	var galleryIndex = 0;
@@ -154,7 +170,7 @@ studioHanel.Gallery = function(interiorIndex) {
 	});
 
 	function addGallery() {
-		console.log('addGallery');
+
 		var gallery = '<div id="gallery" class="gallery">';
 		gallery += '<div id="images"></div>';
 		gallery += '<button id="close-button">';

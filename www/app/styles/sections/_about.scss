@@ -24,25 +24,21 @@
         margin-top: 60px;
         margin-bottom: 40px;
 
-        #about-third-column {
+        #about-copy-column {
+            .two-columns {
+                margin: 0;
+                padding: 0;
+                @include prefix('column-gap', 30px);
+            }
+        }
+
+        #about-photo-column {
+            bottom: 0;
             img {
                 margin-bottom: -40px;
-            }
-
-            #cordelia-old {
                 position: relative;
                 left: 50%;
                 margin-left: -122px;
-            }
-
-            #cordelia-new-left {
-                float: left;
-                margin-left: -15px;
-            }
-
-            #cordelia-new-right {
-                float: right;
-                margin-right: -15px;
             }
         }
     } 

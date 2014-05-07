@@ -27,9 +27,8 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <img id="logo" src="images/logo_large.png" alt="Studio Hanel"/>
-
         <div class="navbar-fixed-top">
+            <img id="logo" src="images/logo_large.png" alt="Studio Hanel"/>
             <ul id="menu" class="nav nav-pills pull-right"></ul>
         </div>
 
@@ -46,25 +45,10 @@
             <h1></h1>
             <div class="container">
                 <div class="row">
-                    <div id="about-first-column" class="col-md-4"></div>
-                    <div id="about-second-column" class="col-md-4"></div>
-                    <div id="about-third-column" class="col-md-4"><img id="cordelia-old" src="images/cordelia_old.png"></div>
+                    <div id="about-copy-column" class="col-md-8"><div class="two-columns"></div></div>
+                    <div id="about-photo-column" class="col-md-4"><img src="images/cordelia_old.png" width="244" height="274"></div>
                 </div>
             </div> 
-            <!--<div class="container-fluid">
-                <div class="row">
-                    <div id="about-third-column" class="col-md-4"><img id="cordelia-new-left" src="images/cordelia_new_left.png"></div>
-                    <div id="about-first-column" class="col-md-4"></div>
-                    <div id="about-second-column" class="col-md-4"></div>
-                </div>
-            </div>-->
-            <!--<div class="container-fluid">
-                <div class="row">
-                    <div id="about-first-column" class="col-md-4"></div>
-                    <div id="about-second-column" class="col-md-4"></div>
-                    <div id="about-third-column" class="col-md-4"><img id="cordelia-new-right" src="images/cordelia_new_right.png"></div>
-                </div>
-            </div>-->
         </div>
 
         <div id="interiors">
@@ -111,7 +95,7 @@
                         <form action="http://127.0.0.1:8000/StudioHanel/contact/" method="post">
                             <input id="name-input" class="text-input" type="text" name="name" placeholder="Your name"> 
                             <input id="email-input" class="text-input" type="text" name="sender" placeholder="Your email">
-                            <input id="subject-input" class="text-input" type="text" name="subject" placeholder="Your subject">
+                            <!--<input id="subject-input" class="text-input" type="text" name="subject" placeholder="Your subject">-->
                             <input id="message-input" class="text-input" type="text" name="message" placeholder="What's on your mind?">
                             <input id="send-button" class="button" type="submit" value="Send"> 
                         </form>
@@ -127,6 +111,8 @@
             <div class="shadow-up"></div>
             <div class="pattern"></div>
         </div>
+
+        <div id="contact-util"></div>
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->

@@ -24,28 +24,36 @@ studioHanel.Navigation = function(menu, landing, teaser, about) {
 
 	function scrollToPosition(targetPosition) {
 		var scrollDistance = Math.abs(targetPosition - scrollTop);
-		var scrollTime = 0.33 + scrollDistance*0.00033;
-		console.log('scrollTime = ' + scrollTime);
-		TweenMax.to($(window), scrollTime, {scrollTo:{y:targetPosition, autoKill:true}, ease:Sine.easeOut, onUpdate:update, overwrite:5});
+		var scrollTime = 0.2 + scrollDistance*0.0002;
+		TweenMax.to($(window), scrollTime, {scrollTo:{y:targetPosition, autoKill:false}, ease:Sine.easeOut, onUpdate:update, overwrite:5});
 	}
 	studioHanel.Navigation.prototype.scrollToPosition = scrollToPosition;
 
 	function update(updateScrollTop) {
 		
-		console.log('scrollTop = ' + scrollTop);
 		if(updateScrollTop === true) {
 			$(window).scrollTop(scrollTop);
 		}
 		else if ($(window).scrollTop() > 0) {
 			scrollTop = $(window).scrollTop();
 		}
-		maxScrollTop = $(document).height() - $(window).height();
 
+		maxScrollTop = $(document).height() - windowHeight;
+
+		$(document).height(1000);
+
+		console.log('scrollTop = ' + scrollTop + ' | maxScrollTop = ' + maxScrollTop);
+		console.log('$(document).height() = ' + $(document).height() + ' | $(html).height() = ' + $('html').height());
+
+		updateSections();
+	}
+	studioHanel.Navigation.prototype.update = update;
+
+	function updateSections() {
 		$.each(sections, function(index, section) {
 			section.update(windowHeight, scrollTop, maxScrollTop);
 		});
 	}
-	studioHanel.Navigation.prototype.update = update;
 
 	function registerSection(section) {
 		sections.push(section);

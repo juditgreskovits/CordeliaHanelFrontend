@@ -18,6 +18,7 @@ studioHanel.Menu = function(navigation) {
 			scrollToSection(this.id);
 		});
 		$('#logo').on('click', function(evt) {
+			evt.preventDefault();
 			scrollToSection(0);
 		});
 	}
@@ -47,6 +48,7 @@ studioHanel.Menu = function(navigation) {
 	studioHanel.Menu.prototype.update = update;
 
 	function calculateScrollTops(wh) {
+		console.log('calculateScrollTops windowHeight = ' + windowHeight + ' | wh = ' + wh);
 		if(windowHeight != wh) {
 			windowHeight = wh;
 			scrollTops[1] = $('#landing').height();
@@ -55,10 +57,11 @@ studioHanel.Menu = function(navigation) {
 			scrollTops[4] = scrollTops[3] + $('#case-study').height();
 			scrollTops[5] = scrollTops[4] + $('#contact').height();
 		}
+		console.log('calculateScrollTops scrollTops = ' + scrollTops);
 	}
 
 	function highlight() {
-		console.log('highlight currentIndex = ' + currentIndex);
+
 		if(previousIndex != currentIndex) {
 			$('#menu li #' + previousIndex).removeClass('selected');
 			$('#menu li #' + currentIndex).addClass('selected');

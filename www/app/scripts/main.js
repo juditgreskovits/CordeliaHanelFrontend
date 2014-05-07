@@ -57,10 +57,10 @@ studioHanel.StudioHanel = function() {
 
 	var sectionIds = ['#landing', '#teaser-about', '#about', 
 		'#teaser-interiors', '#interiors', '#case-study',
-		'#product-design', '#teaser-contact', '#contact'];
+		'#product-design', '#teaser-contact', '#contact', '#contact-util'];
 
 	function displaySections(display) {
-		console.log('displaySections display = ' + display);
+
 		var css = display ? 'block' : 'none';
 		$.each(sectionIds, function(index, sectionId) {
 			$(sectionId).css('display', css);
@@ -68,7 +68,7 @@ studioHanel.StudioHanel = function() {
 	}
 	
 	function hideSections(hide) {
-		console.log('hideSections hide = ' + hide);
+
 		var css = hide ? 'hidden' : 'visible';
 		$.each(sectionIds, function(index, sectionId) {
 			$(sectionId).css('visibility', css);

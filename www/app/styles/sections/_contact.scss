@@ -10,6 +10,7 @@
 
 #contact {
     @extend %section;
+    position: fixed;
     background-color: $dark-brown;
     padding-bottom: 500px;
     z-index: -1000;
@@ -37,7 +38,7 @@
             &:focus {
                 border-bottom: 2px solid $yellow;
             }
-            @include input-placeholder {
+            @include prefix-content('placeholder') {
                 color: $green;
             }
         }
@@ -96,4 +97,9 @@
             background-size: 30px 40px;
         }
     }
+}
+
+#contact-util {
+    @extend %section;
+    // background-color: $white;
 }
