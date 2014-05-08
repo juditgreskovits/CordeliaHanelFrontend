@@ -24,9 +24,9 @@ studioHanel.About = function() {
 	function populate(data) {
 		var aboutData = data[0];
 		$("#about h1").text(aboutData.title);
-		var descriptions = studioHanel.Utils.markupLinebreaks(aboutData.description);
-		descriptions = descriptions.split("<br/>").join('</p><p>');
-		$('#about-copy-column div').append('<p>' + descriptions + '</p>');
+		var description = studioHanel.Utils.markupLinebreaks(aboutData.description);
+		description = description.split("<br/>").join('</p><p>');
+		$('#about-copy-column div').append('<p>' + description + '</p>');
 		/*descriptions = descriptions.split("<br/>");
 		console.log('descriptions.length = ' + descriptions.length);
 		var firstDescription = "";

@@ -1,5 +1,23 @@
 #product-design {
     @extend %section;
-    @extend %placeholder;
+    // @extend %placeholder;
     background-color: $white;
+
+    p {
+    	font-size: $font-size-h4;
+    }
+
+    #bathroom-image {
+    	height: 100%;
+    	width: auto;
+    	margin: 0 30px 0 0;
+    	padding: 0;
+    	float: left;
+    }
+
+    #bathroom-description {
+    	background-color: $white;
+    	margin: 0;
+    	padding: 20px;
+    }
 }
