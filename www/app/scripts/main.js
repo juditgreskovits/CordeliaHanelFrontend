@@ -57,7 +57,7 @@ studioHanel.StudioHanel = function() {
 
 	var sectionIds = ['#landing', '#teaser-about', '#about', 
 		'#teaser-interiors', '#interiors', '#case-study',
-		'#product-design', '#teaser-contact', '#contact', '#contact-util'];
+		'#product-design', '#teaser-contact', '#contact'/*, '#contact-util'*/, '#copyright'];
 
 	function displaySections(display) {
 

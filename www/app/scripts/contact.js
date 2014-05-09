@@ -17,8 +17,68 @@ studioHanel.TeaserContact = function() {
 studioHanel.Contact = function() {
 
 	var contactHeight;
+	var copyrightHeight;
 	var testScrollTop;
 	var mScrollTop;
+
+	$('input#send').click(function() {
+		console.log('send');
+		$('label#error').text('');
+		var errors = [];
+	    var name = $('input#name').val();
+	    if (name == '') {
+	    	$('input#name').focus();
+	    	errors.push('name');
+	    }
+	    var email = $('input#email').val();
+	    if (email == '') {
+	    	if(!errors.length) {
+	    		$('input#email').focus();
+	    	}
+	    	errors.push('email');
+	    }
+	    var message = $('input#message').val();
+	    if (message == '') {
+	    	if(!errors.length) {
+	    		$('input#message').focus();
+	    	}
+	    	errors.push('message');
+	    }
+
+	    if(errors.length) {
+	    	var errorText = 'Please enter your ' + errors[0];
+	    	if(errors.length > 1) {
+	    		errorText += errors.length > 2 ? ', ' : ' and ';
+		    	errorText += errors[1];
+		    	if(errors.length == 3) {
+		    		errorText += ' and ' + errors[2];
+		    	}
+	    	}
+	    	errorText += '.';
+	    	$('label#error').text(errorText);
+	    	return false;
+	    }
+
+		var dataString = 'name='+ name + '&sender=' + email + '&subject=' + 'Studio-Hanel Contact Form' + '&message=' + message;
+		console.log(dataString);
+		// return;	
+		$.ajax({
+			type: 'POST',
+			url: main.getPath() + 'StudioHanel/contact/',
+			data: dataString,
+			success: function(response) {
+				console.log(response);
+				if(response == 'success') {
+					var html = '<div id="feedback">';
+					html += '<h3>Thank you for your message!</h3>'; 
+					html += '<p>We will be in touch soon.</p>';
+					html += '</div>';
+					$('#contact-form').html(html);
+				}
+		  	}
+		});
+		return false;
+	});
 
 	function populate(data) {
 		$('#phone').append('<p><strong>' + data[0].phone + '</strong></p>');
@@ -28,7 +88,8 @@ studioHanel.Contact = function() {
 		$('#address').append(address);
 
 		contactHeight = $('#contact').height();
-		$('#contact-util').height(contactHeight);
+		copyrightHeight = $('#copyright').height();
+		$('#contact-util').height(contactHeight + copyrightHeight);
 	}
 	studioHanel.Contact.prototype.populate = populate;
 
@@ -36,28 +97,8 @@ studioHanel.Contact = function() {
 
 		var targetTop = $('#teaser-contact').position().top + $('#teaser-contact').height();
 		$('#contact-util').css('top', targetTop);
-		$('#contact').css('top', windowHeight-contactHeight);
-
-		/*var testScrollTop = $('#teaser-contact').position().top + $('#teaser-contact').height() - windowHeight;
-		var targetTop = $('#teaser-contact').position().top + $('#teaser-contact').height() - contactHeight;
-		var targetPaddingBottom; 
-		if(scrollTop < testScrollTop) {
-			targetTop = targetTop; //this is not right - like ever.
-			targetPaddingBottom = contactHeight;
-		} 
-		else {
-			var diff = scrollTop - testScrollTop;
-			if(diff < contactHeight) {
-				targetTop = targetTop + diff; // top to increase, 
-				targetPaddingBottom = contactHeight - diff; // padding to decrease by same amount
-			}
-			else {
-				targetTop = targetTop + contactHeight;
-				targetPaddingBottom = 0;
-			}
-		} 
-		$('#contact').css({top:targetTop});
-		$('#contact').css('padding-bottom', targetPaddingBottom);*/
+		$('#contact').css('top', windowHeight - contactHeight - copyrightHeight);
+		$('#copyright').css('top', windowHeight - copyrightHeight);
 	}
 	studioHanel.Contact.prototype.update = update;
 };

@@ -12,15 +12,36 @@
     @extend %section;
     position: fixed;
     background-color: $dark-brown;
-    padding-bottom: 500px;
     z-index: -1000;
+
+    font-size: $font-size-h4;
+    color: $yellow;
 
     .container {
         margin-top: 60px;
         margin-bottom: 40px;
     }
 
+    #feedback {
+        h3 {
+            margin-top: 10px;
+            // padding: 0; 
+        }
+        p {
+            text-align: center;
+        }
+    }
+
     form {
+        #error {
+            margin-top: 12px;
+            margin-bottom: 12px;
+            float: left;
+            font-size: $font-size-h4;
+            color: $yellow;
+            // visibility: hidden;
+        }
+
         input {
             margin-top: 12px;
             margin-bottom: 12px;
@@ -51,31 +72,29 @@
             text-transform: uppercase;
         }
 
-        #name-input, #email-input {
+        #name, #email {
             width: 45%;
         }
 
-        #name-input {
+        #name {
             float: left;
         }
 
-        #email-input {
+        #email {
             float: right;
         }
 
-        #message-input {
+        #message {
             width: 100%;
         }
 
-        #send-button {
+        #send {
             float: right;
         }
     }
 
     #contact-details {
         float: right;
-        font-size: $font-size-h4;
-        color: $yellow;
 
         p {
             margin-top: 12px;
@@ -101,5 +120,16 @@
 
 #contact-util {
     @extend %section;
-    // background-color: $white;
+    display: block;
+}
+
+#copyright {
+    @extend %section;
+    position: fixed;
+    background-color: $green;
+    z-index: -1100;
+    p {
+        margin: 10px;
+        color: $dark-brown;
+    }
 }

@@ -10,7 +10,7 @@ studioHanel.ProductDesign = function() {
 		descriptions.splice(descriptions.length - 2, 0, '<img src="' + designImages[1].image + '">');
 		description = descriptions.join('</p><p>');
 		var html = '<img id="bathroom-image" src="' + designImages[0].image + '">';
-		html += '<div id="bathroom-description">' + description + '</div>';
+		html += '<div id="bathroom-description"><p>' + description + '</p></div>';
 		$('#product-design').append(html);
 	}
 	studioHanel.ProductDesign.prototype.populate = populate;

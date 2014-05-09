@@ -55,7 +55,7 @@ studioHanel.Menu = function(navigation) {
 			scrollTops[2] = scrollTops[1] + $('#about').height();
 			scrollTops[3] = scrollTops[2] + $('#interiors').height();
 			scrollTops[4] = scrollTops[3] + $('#case-study').height();
-			scrollTops[5] = scrollTops[4] + $('#contact').height();
+			scrollTops[5] = scrollTops[4] + $('#contact').height() + $('#copyright').height();
 		}
 		console.log('calculateScrollTops scrollTops = ' + scrollTops);
 	}

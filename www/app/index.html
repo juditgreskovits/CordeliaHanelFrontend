@@ -89,16 +89,21 @@
             <div class="arrow"></div>
         </div>
 
+        <div id="contact-util"></div>
+
         <div id="contact">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-7">
-                        <form action="http://127.0.0.1:8000/StudioHanel/contact/" method="post">
-                            <input id="name-input" class="text-input" type="text" name="name" placeholder="Your name"> 
-                            <input id="email-input" class="text-input" type="text" name="sender" placeholder="Your email">
-                            <!--<input id="subject-input" class="text-input" type="text" name="subject" placeholder="Your subject">-->
-                            <input id="message-input" class="text-input" type="text" name="message" placeholder="What's on your mind?">
-                            <input id="send-button" class="button" type="submit" value="Send"> 
+                    <div class="col-md-7" id="contact-form">
+                        <form name="contact" action="" method="">
+                            <fieldset>
+                                <input id="name" class="text-input" type="text" name="name" placeholder="Your name"> 
+                                <input id="email" class="text-input" type="text" name="sender" placeholder="Your email">
+                                <input id="message" class="text-input" type="text" name="message" placeholder="What's on your mind?">
+                                <label id="error"></label>
+                                <input id="send" class="button" type="button" value="Send">
+                                <!--<input id="send" class="button" name="submit" value="Send">-->
+                            </fieldset>
                         </form>
                     </div>
                     <div class="col-md-4">
@@ -113,7 +118,9 @@
             <div class="pattern"></div>
         </div>
 
-        <div id="contact-util"></div>
+        <div id="copyright">
+            <p>&copy; Studio Hanel 2014   All rights reserved including all imagery as shown on this website</p>
+        </div>
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
