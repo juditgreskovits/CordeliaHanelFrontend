@@ -15,6 +15,29 @@ module.exports = function (grunt) {
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
+    // custom createConfig script for replacing Django {{STATIC_URL}} references
+    // when building config for concat and cssmin
+    var path = require('path');
+    function createDjangoStaticConcatConfig(context, block) {
+      var cfg = {files: []};
+      var staticPattern = /\{\{\s*STATIC_URL\s*\}\}/;
+
+      block.dest = block.dest.replace(staticPattern, '');
+      var outfile = path.join(context.outDir, block.dest);
+
+      // Depending whether or not we're the last of the step we're not going to output the same thing
+      var files = {
+        dest: outfile,
+        src: []
+      };
+      context.inFiles.forEach(function(f) {
+        files.src.push(path.join(context.inDir, f.replace(staticPattern, '')));
+      });
+      cfg.files.push(files);
+      context.outFiles = [block.dest];
+      return cfg;
+    }
+
     // Define the configuration for all the tasks
     grunt.initConfig({
 
@@ -216,7 +239,27 @@ module.exports = function (grunt) {
         // additional tasks can operate on them
         useminPrepare: {
             options: {
-                dest: '<%= config.dist %>'
+                dest: '<%= config.dist %>',
+                flow: {
+                  steps: {
+                    js: [
+                      {
+                        name: 'concat',
+                        createConfig: createDjangoStaticConcatConfig
+                      },
+                      'uglifyjs'
+                    ],
+                    // also apply it to css files
+                    css: [
+                      {
+                        name: 'cssmin',
+                        createConfig: createDjangoStaticConcatConfig
+                      }
+                    ]
+                  },
+                  // this property is necessary
+                  post: {}
+                }
             },
             html: '<%= config.app %>/index.html'
         },
@@ -224,7 +267,10 @@ module.exports = function (grunt) {
         // Performs rewrites based on rev and the useminPrepare configuration
         usemin: {
             options: {
-                assetsDirs: ['<%= config.dist %>', '<%= config.dist %>/images']
+                assetsDirs: ['<%= config.dist %>', '<%= config.dist %>/images'],
+                patterns: {
+                  html: [[/\{\{\s*STATIC_URL\s*\}\}([^'"]*)["']/mg, 'django static']]
+                }
             },
             html: ['<%= config.dist %>/{,*/}*.html'],
             css: ['<%= config.dist %>/styles/{,*/}*.css']
@@ -256,14 +302,14 @@ module.exports = function (grunt) {
         htmlmin: {
             dist: {
                 options: {
-                    collapseBooleanAttributes: true,
-                    collapseWhitespace: true,
-                    removeAttributeQuotes: true,
-                    removeCommentsFromCDATA: true,
-                    removeEmptyAttributes: true,
-                    removeOptionalTags: true,
-                    removeRedundantAttributes: true,
-                    useShortDoctype: true
+                    collapseBooleanAttributes: false,
+                    collapseWhitespace: false,
+                    removeAttributeQuotes: false,
+                    removeCommentsFromCDATA: false,
+                    removeEmptyAttributes: false,
+                    removeOptionalTags: false,
+                    removeRedundantAttributes: false,
+                    useShortDoctype: false
                 },
                 files: [{
                     expand: true,
@@ -403,7 +449,7 @@ module.exports = function (grunt) {
         'uglify',
         'copy:dist',
         'modernizr',
-        'rev',
+        // 'rev',
         'usemin',
         'htmlmin'
     ]);

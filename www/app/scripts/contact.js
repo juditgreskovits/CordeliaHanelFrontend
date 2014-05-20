@@ -20,6 +20,7 @@ studioHanel.Contact = function() {
 	var copyrightHeight;
 	var testScrollTop;
 	var mScrollTop;
+	var csrfToken;
 
 	$('input#send').click(function() {
 		console.log('send');
@@ -62,10 +63,12 @@ studioHanel.Contact = function() {
 		var dataString = 'name='+ name + '&sender=' + email + '&subject=' + 'Studio-Hanel Contact Form' + '&message=' + message;
 		console.log(dataString);
 		// return;	
+		console.log('csrfToken = ' + csrfToken);
 		$.ajax({
 			type: 'POST',
 			url: main.getPath() + 'StudioHanel/contact/',
 			data: dataString,
+			beforeSend: function (xhr) {xhr.setRequestHeader('X-CSRFToken', csrfToken);},
 			success: function(response) {
 				console.log(response);
 				if(response == 'success') {
@@ -90,6 +93,9 @@ studioHanel.Contact = function() {
 		contactHeight = $('#contact').height();
 		copyrightHeight = $('#copyright').height();
 		$('#contact-util').height(contactHeight + copyrightHeight);
+
+		csrfToken = data[0].csrf_token;
+		console.log('csrfToken = ' + csrfToken);
 	}
 	studioHanel.Contact.prototype.populate = populate;
 

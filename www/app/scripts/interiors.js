@@ -173,6 +173,7 @@ studioHanel.Gallery = function(interiorIndex) {
 
 		var gallery = '<div id="gallery" class="gallery">';
 		gallery += '<div id="images"></div>';
+		gallery += '<img class="logo" src="images/logo_large.png" alt="Studio Hanel"/>';
 		gallery += '<button id="close-button">';
 		gallery += '<button id="prev-button">';
 		gallery += '<button id="next-button">';

@@ -1,0 +1,135 @@
+{% load staticfiles %}
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>www</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="styles/vendor.css">
+        <link rel="stylesheet" href="styles/main.css">
+        <script src="scripts/vendor/modernizr.js"></script>
+
+    </head>
+    {% if some_variable %}
+    <body onload="studioHanel.StudioHanel()">
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="navbar-fixed-top">
+            <img class="logo" src="{{STATIC_URL}}images/logo_large.png" alt="Studio Hanel">
+            <ul id="menu" class="nav nav-pills pull-right"></ul>
+        </div>
+
+        <div id="landing">
+        </div>
+
+        <div id="teaser-about" class="teaser">
+            <h1></h1>
+            <div class="arrow"></div>
+        </div>
+
+        <div id="about">
+            <div class="header"></div>
+            <h1></h1>
+            <div class="container">
+                <div class="row">
+                    <div id="about-copy-column" class="col-md-8"><div class="two-columns"></div></div>
+                    <div id="about-photo-column" class="col-md-4"><img src="{{STATIC_URL}}images/cordelia_old.png" width="244" height="274"></div>
+                </div>
+            </div> 
+        </div>
+
+        <div id="interiors">
+            <div class="container-fluid"></div>
+        </div>
+
+        <div id="teaser-interiors" class="teaser">
+            <div class="shadow-up"></div>
+            <div class="pattern"></div>
+            <h2></h2>
+            <div class="shadow-down"></div>
+            <div class="arrow"></div>
+        </div>
+
+        <div id="case-study">
+            <div class="container-fluid">
+                <div class="row">
+                    <div id="cell1" class="col-md-6"></div>
+                    <div id="cell2" class="col-md-6"></div>
+                </div>
+                <div class="row">    
+                    <div id="cell3" class="col-md-6"></div>
+                    <div id="cell4" class="col-md-6"></div>
+                </div>
+                <div class="row">    
+                    <div id="cell5" class="col-md-6"></div>
+                    <div id="cell6" class="col-md-6"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product-design">
+            
+        </div>
+
+        <div id="teaser-contact" class="teaser">
+            <h2></h2>
+            <div class="arrow"></div>
+        </div>
+
+        <div id="contact-util"></div>
+
+        <div id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7" id="contact-form">
+                        <form name="contact" action="" method="">
+                            <fieldset>
+                                <input id="name" class="text-input" type="text" name="name" placeholder="Your name"> 
+                                <input id="email" class="text-input" type="text" name="sender" placeholder="Your email">
+                                <input id="message" class="text-input" type="text" name="message" placeholder="What's on your mind?">
+                                <label id="error"></label>
+                                <input id="send" class="button" type="button" value="Send">
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="col-md-4">
+                        <div id="contact-details">
+                            <div id="phone" class="contact-details"></div>
+                            <div id="address" class="contact-details"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shadow-up"></div>
+            <div class="pattern"></div>
+        </div>
+
+        <div id="copyright">
+            <p>&copy; Studio Hanel 2014   All rights reserved including all imagery as shown on this website</p>
+        </div>
+
+        <script src="scripts/vendor.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+
+        <script src="scripts/plugins.js"></script>
+
+        <script src="scripts/main.js"></script>
+</body>
+</html>
