@@ -66,7 +66,7 @@ studioHanel.Contact = function() {
 		console.log('csrfToken = ' + csrfToken);
 		$.ajax({
 			type: 'POST',
-			url: main.getPath() + 'StudioHanel/contact/',
+			url: main.getPath() + 'contact/',
 			data: dataString,
 			beforeSend: function (xhr) {xhr.setRequestHeader('X-CSRFToken', csrfToken);},
 			success: function(response) {
